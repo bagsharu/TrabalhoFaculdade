@@ -24,33 +24,48 @@ public abstract class Personagem {
 	
 	// Método de ataque, recebe um objeto Personagem como alvo
 	public void atacar(Personagem alvo) {
-		if (!this.estaMorto()) {
+		// Se o personagem A não está morto...
+		if (!this.estaMorto()) { 
+			
 			System.out.printf("O %s ataca o %s com <arma>.\n", this.nomeTipo, alvo.nomeTipo);
+			
+			// Se a destreza de A é maior que de B e o mesmo não está morto.
 			if ((this.destreza >= alvo.destreza) || !alvo.estaMorto()) {
+				
+				// Calcula o dano e ataca B.
 				alvo.recebeDano(this.calculoDano());
 				System.out.printf("O ataque foi efetivo com %.f pontos de dano!\n", this.calculoDano());
 			}
+			// Se a destreza de A é menor que de B e o mesmo não está morto.
 			else if((this.destreza < alvo.destreza) || !alvo.estaMorto()) {
+				
+				// Calcula o dano de B e ataca A.
 				this.recebeDano(alvo.calculoDano());
 				System.out.printf("O ataque foi inefetivo e revidado com %.f pontos de dano!\n", alvo.calculoDano());
 			}
+			// Se ambas destrezas são iguais e B não está morto, ninguém perde saúde.
 			else if((this.destreza == alvo.destreza) || !alvo.estaMorto()) {
 				System.out.println("O ataque foi defendido, ninguém se machucou!");
 			}
+			
+			// Se B estiver morto...
 			else
 				System.out.printf("Pare! O %s já está morto!\n", alvo.nomeTipo);
 		}
+		// Se o personagem estiver morto
 		else
 			System.out.printf("O %s não consegue atacar, pois está morto.\n");
 	}
 	
 	// Método para cálculo de dano, devolve o dano calculado
 	public double calculoDano() {
+		
+		// Variável dano para o cálculo.
 		double dano = this.forca * arma.getModDano();
 		return dano;
 	}
 	
-	// Método para receber dano, recebe como parâmetro o valor recebido
+	// Método para sofrer dano, valor de pontos recebido como parâmetro
 	public void recebeDano(double pontosDano) {
 		this.saude = this.saude - pontosDano;
 	}
