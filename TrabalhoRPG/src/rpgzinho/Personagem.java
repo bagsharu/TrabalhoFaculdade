@@ -18,17 +18,29 @@ public abstract class Personagem {
 	}
 	
 	// Método de impressão do status de personagem
-	public abstract void printStatus();
+	public void printStatus() {
+		System.out.printf("%s [Saude: %.f, Forca: %.f, Destreza: %.f, %s]\n", nomeTipo,saude,forca,destreza,arma.getNome());
+	}
 	
 	// Método de ataque, recebe um objeto Personagem como alvo
-	public abstract void atacar(Personagem alvo);
+	public void atacar(Personagem alvo) {
+		
+	}
 	
 	// Método para cálculo de dano, devolve o dano calculado
-	public abstract double calculoDano();
+	public double calculoDano() {
+	}
 	
 	// Método para receber dano, recebe como parâmetro o valor recebido
-	public abstract void recebeDano();
+	public void recebeDano() {
+		
+	}
 	
 	// Método para validar se o personagem está vivo
-	public abstract boolean estaMorto();
+	public boolean estaMorto() {
+		if (saude<1)
+			return true;
+	return false;
+		
+	}
 }
