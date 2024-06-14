@@ -19,7 +19,9 @@ public abstract class Personagem {
 	
 	// Método de impressão do status de personagem
 	public void printStatus() {
-		System.out.printf("%s [Saude: %.f, Forca: %.f, Destreza: %.f, %s]\n", nomeTipo,saude,forca,destreza,arma.getNome());
+		if(this.estaMorto())
+			System.out.printf("%s [Saude: Morreu, Forca: %.1f, Destreza: %.1f, %s]\n", nomeTipo,forca,destreza,arma.getNome());
+		System.out.printf("%s [Saude: %.1f, Forca: %.1f, Destreza: %.1f, %s]\n", nomeTipo,saude,forca,destreza,arma.getNome());
 	}
 	
 	// Método de ataque, recebe um objeto Personagem como alvo
@@ -27,21 +29,21 @@ public abstract class Personagem {
 		// Se o personagem A não está morto...
 		if (!this.estaMorto()) { 
 			
-			System.out.printf("O %s ataca o %s com <arma>.\n", this.nomeTipo, alvo.nomeTipo);
+			System.out.printf("O %s ataca o %s com %s.\n", this.nomeTipo, alvo.nomeTipo, arma.getNome());
 			
 			// Se a destreza de A é maior que de B e o mesmo não está morto.
 			if ((this.destreza >= alvo.destreza) && !alvo.estaMorto()) {
 				
 				// Calcula o dano e ataca B.
 				alvo.recebeDano(this.calculoDano());
-				System.out.printf("O ataque foi efetivo com %.f pontos de dano!\n", this.calculoDano());
+				System.out.printf("O ataque foi efetivo com %.1f pontos de dano!\n", this.calculoDano());
 			}
 			// Se a destreza de A é menor que de B e o mesmo não está morto.
 			else if((this.destreza < alvo.destreza) && !alvo.estaMorto()) {
 				
 				// Calcula o dano de B e ataca A.
 				this.recebeDano(alvo.calculoDano());
-				System.out.printf("O ataque foi inefetivo e revidado com %.f pontos de dano!\n", alvo.calculoDano());
+				System.out.printf("O ataque foi inefetivo e revidado com %.1f pontos de dano!\n", alvo.calculoDano());
 			}
 			// Se ambas destrezas são iguais e B não está morto, ninguém perde saúde.
 			else if((this.destreza == alvo.destreza) && !alvo.estaMorto()) {
@@ -54,7 +56,7 @@ public abstract class Personagem {
 		}
 		// Se o personagem estiver morto
 		else
-			System.out.printf("O %s não consegue atacar, pois está morto.\n");
+			System.out.printf("O %s não consegue atacar, pois está morto.\n", this.nomeTipo);
 	}
 	
 	// Método para cálculo de dano, devolve o dano calculado
