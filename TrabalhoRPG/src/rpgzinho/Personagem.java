@@ -30,21 +30,21 @@ public abstract class Personagem {
 			System.out.printf("O %s ataca o %s com <arma>.\n", this.nomeTipo, alvo.nomeTipo);
 			
 			// Se a destreza de A é maior que de B e o mesmo não está morto.
-			if ((this.destreza >= alvo.destreza) || !alvo.estaMorto()) {
+			if ((this.destreza >= alvo.destreza) && !alvo.estaMorto()) {
 				
 				// Calcula o dano e ataca B.
 				alvo.recebeDano(this.calculoDano());
 				System.out.printf("O ataque foi efetivo com %.f pontos de dano!\n", this.calculoDano());
 			}
 			// Se a destreza de A é menor que de B e o mesmo não está morto.
-			else if((this.destreza < alvo.destreza) || !alvo.estaMorto()) {
+			else if((this.destreza < alvo.destreza) && !alvo.estaMorto()) {
 				
 				// Calcula o dano de B e ataca A.
 				this.recebeDano(alvo.calculoDano());
 				System.out.printf("O ataque foi inefetivo e revidado com %.f pontos de dano!\n", alvo.calculoDano());
 			}
 			// Se ambas destrezas são iguais e B não está morto, ninguém perde saúde.
-			else if((this.destreza == alvo.destreza) || !alvo.estaMorto()) {
+			else if((this.destreza == alvo.destreza) && !alvo.estaMorto()) {
 				System.out.println("O ataque foi defendido, ninguém se machucou!");
 			}
 			
