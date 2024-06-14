@@ -11,10 +11,13 @@ public class BatalhaTeste {
 		Personagem clerigo = new Clerigo("Clerigo", 10,4,7,Martelo);
 		
 		
-		do {
-			
-			
-		}while(paladino.estaMorto() || clerigo.estaMorto());
+		paladino.atacar(clerigo);
+		paladino.printStatus();
+		clerigo.printStatus();
+		System.out.println("");
+		clerigo.atacar(paladino);
+		clerigo.printStatus();
+		paladino.printStatus();
 		
 	}
 
