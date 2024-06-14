@@ -10,15 +10,19 @@ public class BatalhaTeste {
 		ArmaClerigo Martelo = new Martelo("Martelo", 0.6);
 		Personagem clerigo = new Clerigo("Clerigo", 10,4,7,Martelo);
 		
+		do {
+			paladino.atacar(clerigo);
+			paladino.printStatus();
+			clerigo.printStatus();
+			System.out.println("");
+			//sclerigo.atacar(paladino);
+			//clerigo.printStatus();
+			//paladino.printStatus();
+		}while(!paladino.estaMorto() && !clerigo.estaMorto());
 		
-		paladino.atacar(clerigo);
+		System.out.println(" ");
 		paladino.printStatus();
 		clerigo.printStatus();
-		System.out.println("");
-		clerigo.atacar(paladino);
-		clerigo.printStatus();
-		paladino.printStatus();
-		
 	}
 
 }
