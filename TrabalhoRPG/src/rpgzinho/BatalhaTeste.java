@@ -1,4 +1,5 @@
 package rpgzinho;
+import java.util.Scanner;
 
 public class BatalhaTeste {
 
@@ -10,6 +11,7 @@ public class BatalhaTeste {
 		ArmaClerigo Martelo = new Martelo("Martelo", 0.6);
 		Personagem clerigo = new Clerigo("Clerigo", 10,4,7,Martelo);
 		
+		// Teste de entrada_combate 1
 		do {
 			paladino.atacar(clerigo);
 			paladino.printStatus();
@@ -20,7 +22,8 @@ public class BatalhaTeste {
 			//paladino.printStatus();
 		}while(!paladino.estaMorto() && !clerigo.estaMorto());
 		
-		System.out.println(" ");
+		
+		
 		paladino.printStatus();
 		clerigo.printStatus();
 	}
