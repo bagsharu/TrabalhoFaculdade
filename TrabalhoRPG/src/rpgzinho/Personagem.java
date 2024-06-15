@@ -19,8 +19,9 @@ public abstract class Personagem {
 	
 	// Método de impressão do status de personagem
 	public void printStatus() {
-		if(this.estaMorto())
+		if(this.saude < 1)
 			System.out.printf("%s [Saude: Morreu, Forca: %.1f, Destreza: %.1f, %s]\n", nomeTipo,forca,destreza,arma.getNome());
+		else
 		System.out.printf("%s [Saude: %.1f, Forca: %.1f, Destreza: %.1f, %s]\n", nomeTipo,saude,forca,destreza,arma.getNome());
 	}
 	
