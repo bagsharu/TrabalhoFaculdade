@@ -75,9 +75,9 @@ public abstract class Personagem {
 	
 	// Método para validar se o personagem está vivo
 	public boolean estaMorto() {
-		if (saude>=1)
-			return false;
-	return true;
+		if (saude<1)
+			return true;
+	return false;
 		
 	}
 }
